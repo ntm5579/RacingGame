@@ -3,15 +3,21 @@
     <head>
         <title>F1 Racing Online</title>
         <meta charset="utf-8">
-        <!--<link rel="styleGuide" href="assets/style.css"> -->
-        <style>canvas {border: 1px solid black;}</style>
+        <link rel="stylesheet" href="assets/style.css">
         <link rel="shortcut icon" href="assets/F1Icon.ico">
     </head>
 
     <body>
-        <img src = "assets/formula-1-logo-7.png" width = "200">
-        <canvas id="gameScreen" width= "1900" height= "860"></canvas>
-        <script type="module" src="src/car.js"></script>
-        <script type="module" src="src/main.js"></script>
+        <div id="navBar">
+            <img src = "assets/formula-1-logo-7.png" width = "200">
+        </div>
+        <!--I don't know why this is here <img id="myImage" src="assets/RedF1Car.png">-->
+        <div id = "gameDiv">
+            <canvas id="gameScreen" width= "1900" height= "860"></canvas>
+        </div> 
+        <!-- was told to make these script containers have the type module, didn't work-->
+        <script type ="module" src="src/car.js"></script>
+        <script type ="module" src="src/main.js"></script>
+        
     </body>
 </html>
