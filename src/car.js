@@ -1,4 +1,4 @@
-class Car {
+export default class Car {
     //default constructor that creates car at 200, 200
     constructor(x, y){
         this.width = 40;
@@ -11,19 +11,10 @@ class Car {
         };
     }
 
+    //draw...() methods are not used as of now, moved to sprites
     draw(ctx){
         ctx.fillStyle = "#00f";
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
-    }
-    
-    drawTriangle(ctx){
-        ctx.fillStyle = "#00f";
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + (this.width /2), this.y + (this.width /2));
-        ctx.lineTo(this.x + (this.width /2), this.y - (this.width /2));
-        ctx.lineTo(this.x, this.y);
-        ctx.closePath();
     }
 
     move(){
@@ -35,4 +26,4 @@ class Car {
         this.angle += theta;
     }
 }
-module.exports = class Car {}
+//module.exports = class Car {}
