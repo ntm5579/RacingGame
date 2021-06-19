@@ -1,6 +1,10 @@
 canvas{
     border: 1px solid black;
+    background-color: gray;
 }
 #myImage{
     display: none;
+}
+div {
+    display: inline-block;
 }
