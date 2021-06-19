@@ -1,19 +1,51 @@
 import Car from "./car.js";
+import InputHandler from "./input.js";
 //about import from this project https://stackoverflow.com/questions/52919331/access-to-script-at-from-origin-null-has-been-blocked-by-cors-policy
-//og tutorial https://www.youtube.com/watch?v=3EMxBkqC4z0&t=597s
 
 let canvas = document.getElementById("gameScreen");
 let ctx = canvas.getContext("2d");
 
-function clear(){
-    ctx.clearRect(0, 0, 1900, 860);
+const GAMEWIDTH = 1850;
+const GAMEHEIGHT = 800;
+function clearScreen(){
+    ctx.clearRect(0, 0, GAMEWIDTH, GAMEHEIGHT);
 }
 
-clear();
+clearScreen();
+
+let img = document.getElementById("myImage");
+
+//info for the teampicker if I need it. teamNames not currently in use
+let teamNames = ["Mercedes", "Red Bull", "Ferrari", "Maclaren", "Alpha Tauri", "Aston Martin", "Alpune", "Alfa Romeo", "Haas", "Williams"];
+let teamCodes = ["Merc", "Rb", "Fer", "Mac", "Tar", "AsMt", "Alp", "Rom", "Has", "Wil"];
+
+function chooseTeam(i){
+    console.log("assets/F1Car" + teamCodes[i] + ".png");
+    document.getElementById("myImage").src = "assets/F1Car" + teamCodes[i] + ".png";
+}
+//placeholder until teampicker is made
+//chooseTeam(0);
 
 //https://spicyyoghurt.com/tutorials/html5-javascript-game-development/images-and-sprite-animations
-//let img = document.getElementById("myImage");
 
-//uncomment when import car works without error
-var car = new Car();
-car.draw(ctx);
+
+let car = new Car(1000,10, GAMEWIDTH, GAMEHEIGHT);
+
+//may be causing issues, was not set to a variable in tutorial.
+new InputHandler(car);
+
+
+let lastTime = 0;
+function gameLoop(timeStamp){
+    let deltaTime = timeStamp - lastTime;
+    lastTime = timeStamp;
+
+    clearScreen();
+    car.update(deltaTime);
+    car.draw(ctx, img);
+    requestAnimationFrame(gameLoop);
+    document.getElementById("dash").innerHTML = "x= "+ car.position.x +", y= "+ car.position.y +", vel= " + car.vel +", acc= " + car.acc + ", angle= " + 
+        car.angle + ", deltaTime= " + deltaTime.toFixed(2);    
+}
+gameLoop();
+
