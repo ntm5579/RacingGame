@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!--tutorial https://www.youtube.com/watch?v=3EMxBkqC4z0&t=597s-->
     <head>
         <title>F1 Racing Online</title>
         <meta charset="utf-8">
@@ -8,16 +9,17 @@
     </head>
 
     <body>
-        <div id="navBar">
+        <div id="F1 Image">
             <img src = "assets/formula-1-logo-7.png" width = "200">
         </div>
-        <!--I don't know why this is here <img id="myImage" src="assets/RedF1Car.png">-->
+        <div><p id="dash"></p></div>
+        <!--used to initialize a variable in main.js so it can be used to draw-->
+        <img id="myImage" src="assets/F1CarFer.png">
         <div id = "gameDiv">
-            <canvas id="gameScreen" width= "1900" height= "860"></canvas>
+            <canvas id="gameScreen" width= "1850" height= "800"></canvas>
         </div> 
-        <!-- was told to make these script containers have the type module, didn't work-->
         <script type ="module" src="src/car.js"></script>
+        <script type ="module" src="src/input.js"></script>
         <script type ="module" src="src/main.js"></script>
-        
     </body>
 </html>
